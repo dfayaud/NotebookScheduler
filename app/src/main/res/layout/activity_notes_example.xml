@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".notes_example">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TextView
+            android:id="@+id/note_topic"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:background="#03A9F4"
+            android:clickable="true"
+            android:editable="true"
+            android:gravity="center"
+            android:text="School"
+            android:textColor="#000000"
+            android:textSize="36sp"
+            android:textStyle="normal" />
+
+        <EditText
+            android:id="@+id/editTextTextMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="465dp"
+            android:background="#ECECEC"
+            android:editable="true"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Enter text here ...."
+            android:inputType="textMultiLine"
+            android:paddingTop="5sp"
+            android:paddingEnd="5sp"
+            android:paddingRight="5sp"
+            android:paddingBottom="5sp"
+            android:textColorHint="#5A5959"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="157dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#ECECEC"
+                android:text="Due Date"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#ECECEC"
+                android:gravity="center"
+                android:text="4/22/2021"
+                android:textColor="#050505"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="144dp"
+                android:layout_height="57dp"
+                android:background="#03A9F4"
+                android:text="Go To Calendar"
+                tools:layout_editor_absoluteX="36dp"
+                tools:layout_editor_absoluteY="16dp" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="153dp"
+                android:layout_height="58dp"
+                android:background="#03A9F4"
+                android:text="New Notebook"
+                tools:layout_editor_absoluteX="216dp"
+                tools:layout_editor_absoluteY="15dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
