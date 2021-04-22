@@ -14,14 +14,14 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom='16dp'
         android:layout_marginTop="16dp"
-        android:textSize="32sp"></TextView>
+        android:textSize="32sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/taskRecycled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tasksText"
-        app:layouytManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:nestedScrollingEnabled="true"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
