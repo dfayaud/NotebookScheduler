@@ -66,6 +66,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <RadioGroup
+                android:id="@+id/radio_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -76,7 +77,7 @@
                     android:checked="true"
                     android:text="Notes"
                     android:textSize="20sp"
-                    android:onClick="newNote"/>
+                    android:onClick="checkInput"/>
 
                 <RadioButton
                     android:id="@+id/checklist_selection"
@@ -84,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:text="Checklist"
                     android:textSize="20sp"
-                    android:onClick="newChecklist"/>
+                    android:onClick="checkInput"/>
 
             </RadioGroup>
 
@@ -100,6 +101,181 @@
             android:textStyle="bold"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:onClick="checkColorChoice"
+                    android:padding="10dp"
+                    android:checked="false"/>
+
+                <RadioButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:onClick="checkColorChoice"
+                    android:padding="10dp"
+                    android:checked="false"/>
+
+                <RadioButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:onClick="checkColorChoice"
+                    android:padding="10dp"
+                    android:checked="false"/>
+
+                <RadioButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:onClick="checkColorChoice"
+                    android:padding="10dp"
+                    android:checked="false"/>
+
+                <RadioButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:onClick="checkColorChoice"
+                    android:padding="10dp"
+                    android:checked="false"/>
+
+                <RadioButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:onClick="checkColorChoice"
+                    android:padding="10dp"
+                    android:checked="false"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:onClick="checkColorChoice"
+                    android:padding="10dp"
+                    android:checked="false"/>
+
+                <RadioButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:onClick="checkColorChoice"
+                    android:padding="10dp"
+                    android:checked="false"/>
+
+                <RadioButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:onClick="checkColorChoice"
+                    android:padding="10dp"
+                    android:checked="false"/>
+
+                <RadioButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:onClick="checkColorChoice"
+                    android:padding="10dp"
+                    android:checked="false"/>
+
+                <RadioButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:onClick="checkColorChoice"
+                    android:padding="10dp"
+                    android:checked="false"/>
+
+                <RadioButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:onClick="checkColorChoice"
+                    android:padding="10dp"
+                    android:checked="false"/>
+
+            </LinearLayout>
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/custom_button"
+                android:text="Add Color"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="sans-serif-condensed-medium"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/custom_button"
+                android:text="Add Image"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="sans-serif-condensed-medium"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/custom_button"
+                android:text="Ok"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="sans-serif-condensed-medium"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/custom_button"
+                android:text="Cancel"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="sans-serif-condensed-medium"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
