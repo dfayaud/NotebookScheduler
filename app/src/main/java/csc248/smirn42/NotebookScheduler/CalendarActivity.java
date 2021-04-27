@@ -94,10 +94,7 @@ public class CalendarActivity extends AppCompatActivity {
                 //TODO : add the link of that button
             }
         });
-
-
     }
-
     private void clickOnRight() {
         calendarView.showNextMonth();
         SimpleDateFormat sdf = new SimpleDateFormat("MMMM");
@@ -147,8 +144,6 @@ public class CalendarActivity extends AppCompatActivity {
     }
     private void MarkTheDaysHasEvents() {
         ArrayList<String> dates = DataBaseWithUI.ListOfDatesHasEvents();
-        //   DummyData d = new DummyData();
-        //    ArrayList<String> dates = d.arrayList;
         if (dates != null) {
             for (int i = 0; i < dates.size(); i++) {
                 String date = dates.get(i);
@@ -169,7 +164,6 @@ public class CalendarActivity extends AppCompatActivity {
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM", Locale.getDefault());
         SimpleDateFormat YearFormat = new SimpleDateFormat("yyyy", Locale.getDefault());
-        //    String formattedDate = df.format(c);
         currentMonth = monthFormat.format(c);
         currentYear = YearFormat.format(c);
         textView.setText(currentMonth+"-"+currentYear);

@@ -96,7 +96,6 @@ public class DayView extends AppCompatActivity {
        String dayOfMonth =intent.getStringExtra("date");
         return dayOfMonth;
     }
-
     private void FillListView(String dayOfMonth , String month , String year){
         ArrayList<Event> arrayOfEvents = DataBaseWithUI.ListOfEvents(dayOfMonth , month , year);
         if(arrayOfEvents != null) {
