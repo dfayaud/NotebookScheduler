@@ -65,6 +65,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public boolean addNotebook(Notebook notebook) {
 
+        if (notebook.getNotebookName().equals(null) || notebook.getNotebookName().equals("")){
+            return false;
+        }
+
+        if (checkDuplicateNotebookName(notebook.getNotebookName())){
+            return false;
+        }
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_NOTEBOOK_NAME, notebook.getNotebookName());
@@ -156,6 +164,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     //NOTES***************************************************************
 
     public boolean addNote(Note note) {
+
+        if(note.getBookId() == -1){
+            return false;
+        }
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -307,4 +319,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
         return notebookId;
     }
+
+    private boolean checkDuplicateNotebookName(String notebookName) {
+
+        List<Notebook> searchList = getNotebooks();
+        for (Notebook notebook : searchList) {
+            if (notebook.getNotebookName().equals(notebookName)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
+
+
