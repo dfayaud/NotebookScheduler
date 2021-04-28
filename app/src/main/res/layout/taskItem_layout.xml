@@ -17,7 +17,7 @@
             android:id="@+id/itemCheckBox"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            tool:android:text="This is a new item"
+            tool:android:text="This is a new itemjhkghghjhgjhg"
             android:paddingStart="8dp"
             android:buttonTint="@android:color/holo_green_light"
             tool:ignore="MissingPrefix" />
