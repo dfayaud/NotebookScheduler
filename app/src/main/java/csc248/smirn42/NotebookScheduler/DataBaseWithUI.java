@@ -23,12 +23,11 @@ public class DataBaseWithUI {
             //if there is no color
             Event event = new Event(note.getNoteText() , Color.RED , note.isCompleted());
             if(note.getDueDate().equals(day + "-" + month + "-" + year))
-               events.add(event);
+                events.add(event);
         }
         return events;
     }
     public  ArrayList<String> ListOfDatesHasEvents(){
-        //TODO: Return list of days that has events on it , return dates as a string
         ArrayList<String> dates = new ArrayList<>();
         DataBaseHelper helper = new DataBaseHelper(context);
         List<Note> notes = helper.getNotes();
@@ -39,3 +38,4 @@ public class DataBaseWithUI {
         return dates;
     }
 }
+
