@@ -8,12 +8,12 @@ import java.util.List;
 
 public class DataBaseWithUI {
 
-    private Context context;
+    private static Context context;
 
     public DataBaseWithUI(Context context){
         this.context = context;
     }
-    public  ArrayList<Event> ListOfEvents(String day , String month , String year){
+    public static ArrayList<Event> ListOfEvents(String day, String month, String year){
 
         DataBaseHelper helper = new DataBaseHelper(context);
         List<Note> notes = helper.getNotes(day+"-"+month+"-"+year);
@@ -27,6 +27,7 @@ public class DataBaseWithUI {
         }
         return events;
     }
+
     public  ArrayList<String> ListOfDatesHasEvents(){
         //TODO: Return list of days that has events on it , return dates as a string
         ArrayList<String> dates = new ArrayList<>();
