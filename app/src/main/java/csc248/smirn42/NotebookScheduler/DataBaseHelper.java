@@ -307,6 +307,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public boolean editNoteText(Note note, String editedText){
+        int noteId = note.getNoteId();
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_NOTE_TEXT, editedText);
+        db.update(NOTE_TABLE, cv, "NOTE_ID = ?", new String[]{String.valueOf(noteId)});
+        return true;
+    }
+
+    public boolean editNoteDate(Note note, String editedDate){
+        int noteId = note.getNoteId();
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_DUE_DATE, editedDate);
+        db.update(NOTE_TABLE, cv, "NOTE_ID = ?", new String[]{String.valueOf(noteId)});
+        return true;
+    }
+
+
+
     public int notebookNameToNotebookId(String notebookName) {
         List<Notebook> searchList = getNotebooks();
         int notebookId = -1;
