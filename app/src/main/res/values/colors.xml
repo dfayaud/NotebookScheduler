@@ -5,11 +5,25 @@
     <color name="accent_color">#004EC3</color>
     <color name="button_color">#0093E3</color>
 
+    <!--Radio Buttons Notebook Color Selection-->
+    <color name="blue">#130fe1</color>
+    <color name="green">#0ee13c</color>
+    <color name="yellow">#d1e00f</color>
+    <color name="hot_pink">#e00ecc</color>
+    <color name="orange">#e0670e</color>
+    <color name="cayan">#0ee1d4</color>
+    <color name="red">#e10e0e</color>
+    <color name="purple">#850ee0</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="gray">#c4c4c4</color>
+    <color name="beige">#ffc165</color>
+    <!--Radio Buttons Notebook Color Selection End-->
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
 </resources>

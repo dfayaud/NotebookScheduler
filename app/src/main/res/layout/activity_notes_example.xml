@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible"
+    tools:context=".notes_example">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <EditText
+            android:id="@+id/notebookName"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#03A9F4"
+            android:clickable="false"
+            android:editable="true"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="36sp"
+            android:textStyle="normal" />
+
+        <EditText
+            android:id="@+id/noteText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:background="#6F58B2E3"
+            android:editable="true"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Enter text here ...."
+            android:inputType="textMultiLine"
+            android:paddingLeft="25sp"
+            android:paddingTop="30sp"
+            android:paddingRight="25sp"
+            android:paddingBottom="20sp"
+            android:textColorHint="#5A5959"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/dueDate"
+                android:layout_width="157dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#7E9DE0EC"
+                android:checked="false"
+                android:onClick="checkbox"
+                android:text="Due Date"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/dateText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#7E9DE0EC"
+                android:clickable="true"
+                android:editable="false"
+                android:gravity="center"
+                android:onClick="pickCurrentDate"
+                android:textColor="#050505"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
