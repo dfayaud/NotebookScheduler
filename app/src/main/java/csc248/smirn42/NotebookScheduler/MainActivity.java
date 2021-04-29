@@ -9,12 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 
-public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.notebook_home_page);
 
         Button goToAddNotebookPage = findViewById(R.id.addNotebookBtn);
         goToAddNotebookPage.setOnClickListener(new View.OnClickListener() {
@@ -29,10 +29,5 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void addNotebook() {
         Intent intent = new Intent(this, AddNotebook.class);
         startActivity(intent);
-    }
-
-    @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
     }
 }

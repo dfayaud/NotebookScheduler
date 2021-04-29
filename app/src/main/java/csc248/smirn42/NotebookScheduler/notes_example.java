@@ -62,11 +62,13 @@ public class notes_example extends AppCompatActivity implements DatePickerDialog
 
     }
 
-    public void goToCalendar(View view) {
-        Intent intent = new Intent(this, AddNotebook.class);
-        startActivity(intent);
-    }
+//    // go to calendar ( I don't think we need this)
+//    public void goToCalendar(View view) {
+//        Intent intent = new Intent(this, AddNotebook.class);
+//        startActivity(intent);
+//    }
 
+    // get today's date
     public void getDate() {
         // Use the current date as the default date in the picker
         final Calendar c = Calendar.getInstance();
@@ -75,6 +77,7 @@ public class notes_example extends AppCompatActivity implements DatePickerDialog
         day = c.get(Calendar.DAY_OF_MONTH);
     }
 
+    // pick current date in calendar
     public void pickCurrentDate(View view) {
         String date = dateText.getText().toString();
         if (date.isEmpty()) {
@@ -88,6 +91,7 @@ public class notes_example extends AppCompatActivity implements DatePickerDialog
         }
     }
 
+    // pick today's date in calendar
     public void pickTodayDate(View view) {
         getDate();
         new DatePickerDialog(this, this, year, month, day).show();
@@ -104,6 +108,7 @@ public class notes_example extends AppCompatActivity implements DatePickerDialog
 
     }
 
+    // check if the due date is checked or not, otherwise set empty string
     public void checkbox(View view) {
         if (dueDate.isChecked()) {
             pickTodayDate(view);
@@ -112,25 +117,43 @@ public class notes_example extends AppCompatActivity implements DatePickerDialog
         }
     }
 
+    // save notes in the database
     public void save_notes() {
+        // get the new edited text and new date from the note
+        String newText = noteText.getText().toString();
+        String newDate = dateText.getText().toString();
 
+
+        // initialize database helper
         DataBaseHelper dataBaseHelper = new DataBaseHelper(notes_example.this);
-        Note note = new Note(-1,
-                dataBaseHelper.notebookNameToNotebookId(notebookName.getText().toString()),
-                noteText.getText().toString(),
-                dateText.getText().toString(),
-                false);
 
-        boolean success = dataBaseHelper.addNote(note);
+        // get notebook Id from notebook Name
+        Notebook noteBook = dataBaseHelper.getNotebooks(notebookName.getText().toString()).get(0);
+        int noteBookId = noteBook.getNotebookId();
 
-        Intent intent = new Intent(this, AddNotebook.class);
+        // get note from corresponding notebookId
+        Note note = dataBaseHelper.getNotes(noteBookId).get(0);
+
+        // change the text and due date in note database
+        boolean successT = dataBaseHelper.editNoteText(note, newText);
+        boolean successD = dataBaseHelper.editNoteDate(note, newDate);
+
+//        Note note = new Note(-1,
+//                dataBaseHelper.notebookNameToNotebookId(notebookName.getText().toString()),
+//                noteText.getText().toString(),
+//                dateText.getText().toString(),
+//                false);
+//
+//        boolean success = dataBaseHelper.addNote(note);
+
+        // go back to homepage
+        Intent intent = new Intent(this, NotebookHome.class);
         startActivity(intent);
     }
 
     @Override
     public void onBackPressed() {
-        //this is only needed if you have specific things
-        //that you want to do when the user presses the back button.
+        // save everything when back button is pressed
         save_notes();
         super.onBackPressed();
     }
