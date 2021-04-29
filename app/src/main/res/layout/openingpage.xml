@@ -25,15 +25,15 @@
             android:textSize="30sp"/>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/goto_calendar_btn"
             android:layout_width="156dp"
             android:layout_height="64dp"
-            android:onClick="gotoMainActivity"
+            android:onClick="gotoCalendarActivity"
             android:text="Go to Calendar"
             android:textSize="18sp"/>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/goto_note_btn"
             android:layout_width="137dp"
             android:layout_height="63dp"
             android:onClick="gotoAddNotebook"
