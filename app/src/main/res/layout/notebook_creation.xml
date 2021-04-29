@@ -44,8 +44,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:textSize="25sp"
-            android:hint="Notebook Name"/>
+            android:hint="Notebook Name"
+            android:textSize="25sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -107,8 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center"
-            android:background="@drawable/layout_background">
+            android:gravity="center">
 
             <RadioGroup
                 android:layout_width="wrap_content"
@@ -275,13 +274,12 @@
                 android:id="@+id/cancel_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/custom_button"
                 android:text="Cancel"
                 android:textAllCaps="false"
-                android:textSize="20sp"
-                android:layout_marginRight="10dp"
-                android:fontFamily="sans-serif-condensed-medium"/>
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/ok_btn"
