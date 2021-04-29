@@ -2,12 +2,14 @@ package csc248.smirn42.NotebookScheduler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
                 addNotebook();
             }
         });
+
     }
 
     public void addNotebook() {
@@ -28,4 +31,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+    }
 }
