@@ -47,6 +47,13 @@ public class NotebookHome extends AppCompatActivity {
                 addNotebook();
             }
         });
+        Button goToSettings = (Button) findViewById(R.id.goToSettingsBtn);
+        goToSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(NotebookHome.this, Settings.class));
+            }
+        });
 
     }
 

@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settingsLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Settings">
@@ -18,11 +19,11 @@
             android:id="@+id/settingsTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:text="Settings"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="36sp"
-            android:gravity="center_horizontal" />
+            android:textSize="36sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -30,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/settingsBanner">>
+        app:layout_constraintTop_toBottomOf="@+id/settingsBanner">
 
         <TextView
             android:id="@+id/notificationsTextView"
@@ -78,46 +79,50 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButton10"
+                android:id="@+id/darkBlueButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="" />
+                android:onClick="goBLUE" />
+
 
             <RadioButton
-                android:id="@+id/radioButton16"
+                android:id="@+id/greenButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:onClick="goGreen" />
 
             <RadioButton
-                android:id="@+id/radioButton11"
+                android:id="@+id/yellowButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:onClick="goYellow"/>
 
             <RadioButton
-                android:id="@+id/radioButton12"
+                android:id="@+id/hotPinkButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:onClick="goHotPink"/>
 
             <RadioButton
-                android:id="@+id/radioButton14"
+                android:id="@+id/orangeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:onClick="goOrange"/>
 
             <RadioButton
-                android:id="@+id/radioButton15"
+                android:id="@+id/cyanButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:onClick="goCyan"/>
         </LinearLayout>
 
         <LinearLayout
@@ -126,45 +131,51 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButton4"
+                android:id="@+id/redButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:onClick="goRed"/>
 
             <RadioButton
-                android:id="@+id/radioButton5"
+                android:id="@+id/purpleButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:onClick="goPurple"/>
 
             <RadioButton
-                android:id="@+id/radioButton6"
+                android:id="@+id/whiteButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:onClick="goWhite"/>
 
             <RadioButton
-                android:id="@+id/radioButton7"
+                android:id="@+id/blackButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:onClick="goBlack"/>
 
             <RadioButton
-                android:id="@+id/radioButton8"
+                android:id="@+id/grayButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:onClick="goGray"/>
 
             <RadioButton
-                android:id="@+id/radioButton9"
+                android:id="@+id/beigeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="goBeige"/>
 
         </LinearLayout>
     </RadioGroup>
@@ -212,9 +223,9 @@
 
     <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="163dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/backroundDesignTextLayout"
-        tools:layout_editor_absoluteX="0dp" >
+        tools:layout_editor_absoluteX="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -230,7 +241,7 @@
             <RadioButton
                 android:id="@+id/radioButton17"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:layout_weight="1" />
         </LinearLayout>
 
