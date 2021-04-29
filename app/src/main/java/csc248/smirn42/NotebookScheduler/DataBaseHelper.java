@@ -32,7 +32,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         super(context, "notebook.db", null, 1);
     }
 
-
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -65,14 +64,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     //NOTEBOOKS************************************************************
 
     public boolean addNotebook(Notebook notebook) {
-
-        if (notebook.getNotebookName().equals(null) || notebook.getNotebookName().equals("")){
-            return false;
-        }
-
-        if (checkDuplicateNotebookName(notebook.getNotebookName())){
-            return false;
-        }
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -166,10 +157,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public boolean addNote(Note note) {
 
-        if(note.getBookId() == -1){
-            return false;
-        }
-
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_BOOK_ID, note.getBookId());
@@ -212,7 +199,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return returnList;
     }
 
-    public  List<Note> getNotes(String dueDate) {
+    public List<Note> getNotes(String dueDate) {
         List<Note> returnList = new ArrayList<>();
         String queryString = "SELECT * FROM " + NOTE_TABLE;
 
@@ -229,8 +216,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 boolean isCompleted = cursor.getInt(4) == 1 ? true : false;
 
                 Note note = new Note(noteId, bookId, noteText, dueDate, isCompleted);
-                if (date.equals(dueDate)){
-                    returnList.add(note);}
+                if (note.getDueDate().equals(dueDate)){
+                returnList.add(note);}
 
             } while (cursor.moveToNext());
         } else {
@@ -308,26 +295,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean editNoteText(Note note, String editedText){
-        int noteId = note.getNoteId();
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(COLUMN_NOTE_TEXT, editedText);
-        db.update(NOTE_TABLE, cv, "NOTE_ID = ?", new String[]{String.valueOf(noteId)});
-        return true;
-    }
-
-    public boolean editNoteDate(Note note, String editedDate){
-        int noteId = note.getNoteId();
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(COLUMN_DUE_DATE, editedDate);
-        db.update(NOTE_TABLE, cv, "NOTE_ID = ?", new String[]{String.valueOf(noteId)});
-        return true;
-    }
-
-
-
     public int notebookNameToNotebookId(String notebookName) {
         List<Notebook> searchList = getNotebooks();
         int notebookId = -1;
@@ -341,17 +308,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return notebookId;
     }
 
-
-    private boolean checkDuplicateNotebookName(String notebookName) {
-
-        List<Notebook> searchList = getNotebooks();
-        for (Notebook notebook : searchList) {
-            if (notebook.getNotebookName().equals(notebookName)) {
-                return true;
-            }
-        }
-        return false;
+    public boolean editNoteText(Note note, String editedText){
+        int noteId = note.getNoteId();
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_NOTE_TEXT, editedText);
+        db.update(NOTE_TABLE, cv, "NOTE_ID = ?", new String[]{String.valueOf(noteId)});
+        return true;
     }
-
+    public boolean editNoteDate(Note note, String editedDate){
+        int noteId = note.getNoteId();
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_DUE_DATE, editedDate);
+        db.update(NOTE_TABLE, cv, "NOTE_ID = ?", new String[]{String.valueOf(noteId)});
+        return true;
+    }
 }
-

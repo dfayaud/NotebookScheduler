@@ -10,6 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NotebookScheduler">
 
+        <activity android:name=".OpeningPage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
         <activity android:name=".NoteList">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -18,16 +26,13 @@
 
         <activity android:name=".notes_example">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 
         <activity android:name=".NotebookHome">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 
