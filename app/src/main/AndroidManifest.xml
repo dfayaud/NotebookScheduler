@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NotebookScheduler">
 
+        <activity android:name=".OpeningPage">
+
+
         <activity android:name=".NoteList">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -17,6 +20,7 @@
         </activity>
 
         <activity android:name=".notes_example">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
