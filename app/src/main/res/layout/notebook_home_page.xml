@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".NotebookHome"
     android:background="@color/primary_color">
 
     <LinearLayout
@@ -123,6 +123,12 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/black"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/notebook_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
 
     </LinearLayout>
 
