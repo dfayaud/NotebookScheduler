@@ -40,7 +40,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 + NOTEBOOK_TABLE
                 + " (" + COLUMN_NOTEBOOK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COLUMN_NOTEBOOK_NAME + " TEXT, "
-                + COLUMN_NOTEBOOK_COLOR + " TEXT, "
+                + COLUMN_NOTEBOOK_COLOR + " INTEGER, "
                 + COLUMN_PICTURE_LOCATION + " TEXT, "
                 + COLUMN_IS_LIST + " BOOLEAN)";
 
@@ -62,9 +62,113 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+    //NOTEBOOKS************************************************************
+
+    public boolean addNotebook(Notebook notebook) {
+
+        if (notebook.getNotebookName().equals(null) || notebook.getNotebookName().equals("")){
+            return false;
+        }
+
+        if (checkDuplicateNotebookName(notebook.getNotebookName())){
+            return false;
+        }
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_NOTEBOOK_NAME, notebook.getNotebookName());
+        cv.put(COLUMN_NOTEBOOK_COLOR, notebook.getNotebookColor());
+        cv.put(COLUMN_PICTURE_LOCATION, notebook.getPictureLocation());
+        cv.put(COLUMN_IS_LIST, notebook.isList());
+        long insert = db.insert(NOTEBOOK_TABLE, null, cv);
+        if (insert == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public List<Notebook> getNotebooks() {
+        List<Notebook> returnList = new ArrayList<>();
+        String queryString = "SELECT * FROM " + NOTEBOOK_TABLE;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int notebookId = cursor.getInt(0);
+                String notebookName = cursor.getString(1);
+                int notebookColor = cursor.getInt(2);
+                String pictureLocation = cursor.getString(3);
+                boolean isList = cursor.getInt(4) == 1 ? true : false;
+
+                Notebook notebook = new Notebook(notebookId, notebookName, notebookColor, pictureLocation, isList);
+                returnList.add(notebook);
+
+            } while (cursor.moveToNext());
+        } else {
+
+        }
+        cursor.close();
+        db.close();
+        return returnList;
+    }
+
+    public List<Notebook> getNotebooks(String notebookName) {
+        List<Notebook> returnList = new ArrayList<>();
+        String queryString = "SELECT * FROM " + NOTEBOOK_TABLE;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int notebookId = cursor.getInt(0);
+                String bookName = cursor.getString(1);
+                int notebookColor = cursor.getInt(2);
+                String pictureLocation = cursor.getString(3);
+                boolean isList = cursor.getInt(4) == 1 ? true : false;
+
+                Notebook notebook = new Notebook(notebookId, notebookName, notebookColor, pictureLocation, isList);
+                if(notebook.getNotebookName().equals(bookName)){
+                returnList.add(notebook);}
+
+            } while (cursor.moveToNext());
+        } else {
+
+        }
+        cursor.close();
+        db.close();
+        return returnList;
+    }
+
+    public boolean deleteNotebook(Notebook notebook){
+        deleteNotesByNotebook(notebook.getNotebookId());
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String queryString = "DELETE FROM " + NOTEBOOK_TABLE + " WHERE " + COLUMN_NOTEBOOK_ID + " = " + notebook.getNotebookId();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
     //NOTES***************************************************************
 
     public boolean addNote(Note note) {
+
+        if(note.getBookId() == -1){
+            return false;
+        }
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -204,5 +308,50 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public boolean editNoteText(Note note, String editedText){
+        int noteId = note.getNoteId();
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_NOTE_TEXT, editedText);
+        db.update(NOTE_TABLE, cv, "NOTE_ID = ?", new String[]{String.valueOf(noteId)});
+        return true;
+    }
+
+    public boolean editNoteDate(Note note, String editedDate){
+        int noteId = note.getNoteId();
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_DUE_DATE, editedDate);
+        db.update(NOTE_TABLE, cv, "NOTE_ID = ?", new String[]{String.valueOf(noteId)});
+        return true;
+    }
+
+
+
+    public int notebookNameToNotebookId(String notebookName) {
+        List<Notebook> searchList = getNotebooks();
+        int notebookId = -1;
+        for (Notebook notebook : searchList) {
+            if (notebook.getNotebookName().equals(notebookName)) {
+                notebookId = notebook.getNotebookId();
+
+                return notebookId;
+            }
+        }
+        return notebookId;
+    }
+
+
+    private boolean checkDuplicateNotebookName(String notebookName) {
+
+        List<Notebook> searchList = getNotebooks();
+        for (Notebook notebook : searchList) {
+            if (notebook.getNotebookName().equals(notebookName)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
+
