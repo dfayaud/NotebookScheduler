@@ -107,8 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center"
-            android:background="@drawable/layout_background">
+            android:gravity="center">
 
             <RadioGroup
                 android:layout_width="wrap_content"

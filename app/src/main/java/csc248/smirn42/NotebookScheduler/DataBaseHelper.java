@@ -351,13 +351,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
         return false;
 
+    }
+
     public Cursor getNotebookDetails(String ID) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + NOTE_TABLE + " WHERE " + COLUMN_BOOK_ID + "=?";
         Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(ID)});
         return cursor;
 
-    }
+     }
 }
 
 
