@@ -32,6 +32,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         super(context, "notebook.db", null, 1);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -211,7 +212,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return returnList;
     }
 
-    public List<Note> getNotes(String dueDate) {
+    public  List<Note> getNotes(String dueDate) {
         List<Note> returnList = new ArrayList<>();
         String queryString = "SELECT * FROM " + NOTE_TABLE;
 
@@ -228,8 +229,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 boolean isCompleted = cursor.getInt(4) == 1 ? true : false;
 
                 Note note = new Note(noteId, bookId, noteText, dueDate, isCompleted);
-                if (note.getDueDate().equals(dueDate)){
-                returnList.add(note);}
+                if (date.equals(dueDate)){
+                    returnList.add(note);}
 
             } while (cursor.moveToNext());
         } else {
@@ -350,14 +351,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             }
         }
         return false;
-
-    public Cursor getNotebookDetails(String ID) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + NOTE_TABLE + " WHERE " + COLUMN_BOOK_ID + "=?";
-        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(ID)});
-        return cursor;
-
     }
-}
 
+}
 
