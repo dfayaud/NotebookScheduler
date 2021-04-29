@@ -39,7 +39,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 + NOTEBOOK_TABLE
                 + " (" + COLUMN_NOTEBOOK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COLUMN_NOTEBOOK_NAME + " TEXT, "
-                + COLUMN_NOTEBOOK_COLOR + " TEXT, "
+                + COLUMN_NOTEBOOK_COLOR + " INTEGER, "
                 + COLUMN_PICTURE_LOCATION + " TEXT, "
                 + COLUMN_IS_LIST + " BOOLEAN)";
 
@@ -99,7 +99,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             do {
                 int notebookId = cursor.getInt(0);
                 String notebookName = cursor.getString(1);
-                String notebookColor = cursor.getString(2);
+                int notebookColor = cursor.getInt(2);
                 String pictureLocation = cursor.getString(3);
                 boolean isList = cursor.getInt(4) == 1 ? true : false;
 
@@ -127,7 +127,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             do {
                 int notebookId = cursor.getInt(0);
                 String bookName = cursor.getString(1);
-                String notebookColor = cursor.getString(2);
+                int notebookColor = cursor.getInt(2);
                 String pictureLocation = cursor.getString(3);
                 boolean isList = cursor.getInt(4) == 1 ? true : false;
 
@@ -340,6 +340,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return notebookId;
     }
 
+
     private boolean checkDuplicateNotebookName(String notebookName) {
 
         List<Notebook> searchList = getNotebooks();
@@ -349,6 +350,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             }
         }
         return false;
+
+    public Cursor getNotebookDetails(String ID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + NOTE_TABLE + " WHERE " + COLUMN_BOOK_ID + "=?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(ID)});
+        return cursor;
+
     }
 }
 
