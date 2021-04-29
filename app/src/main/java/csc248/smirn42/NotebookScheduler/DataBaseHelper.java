@@ -65,6 +65,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public boolean addNotebook(Notebook notebook) {
 
+        if (notebook.getNotebookName().equals(null) || notebook.getNotebookName().equals("")){
+            return false;
+        }
+
+        if (checkDuplicateNotebookName(notebook.getNotebookName())){
+            return false;
+        }
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_NOTEBOOK_NAME, notebook.getNotebookName());
@@ -156,6 +164,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     //NOTES***************************************************************
 
     public boolean addNote(Note note) {
+
+        if(note.getBookId() == -1){
+            return false;
+        }
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -295,6 +307,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public boolean editNoteText(Note note, String editedText){
+        int noteId = note.getNoteId();
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_NOTE_TEXT, editedText);
+        db.update(NOTE_TABLE, cv, "NOTE_ID = ?", new String[]{String.valueOf(noteId)});
+        return true;
+    }
+
+    public boolean editNoteDate(Note note, String editedDate){
+        int noteId = note.getNoteId();
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_DUE_DATE, editedDate);
+        db.update(NOTE_TABLE, cv, "NOTE_ID = ?", new String[]{String.valueOf(noteId)});
+        return true;
+    }
+
+
+
     public int notebookNameToNotebookId(String notebookName) {
         List<Notebook> searchList = getNotebooks();
         int notebookId = -1;
@@ -308,10 +340,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return notebookId;
     }
 
-    public Cursor getNotebookDetails(String ID) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + NOTE_TABLE + " WHERE " + COLUMN_BOOK_ID + "=?";
-        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(ID)});
-        return cursor;
+
+    private boolean checkDuplicateNotebookName(String notebookName) {
+
+        List<Notebook> searchList = getNotebooks();
+        for (Notebook notebook : searchList) {
+            if (notebook.getNotebookName().equals(notebookName)) {
+                return true;
+            }
+        }
+        return false;
     }
+
 }
+
+

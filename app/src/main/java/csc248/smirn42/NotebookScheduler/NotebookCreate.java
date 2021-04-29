@@ -132,5 +132,12 @@ public class NotebookCreate extends AppCompatActivity {
             Toast.makeText(this, "Notebook " + notebookName + " created", Toast.LENGTH_SHORT).show();
             notebookNameInput.getText().clear();
         }
+
+        Note note = new Note(-1,
+                dbhelper.notebookNameToNotebookId(notebookName),
+                "",
+                "",
+                false);
+        boolean successN = dbhelper.addNote(note);
     }
 }
