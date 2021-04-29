@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.TextView;
 
 
 public class Settings extends AppCompatActivity {
     View view;
+    TextView textView;
+    RadioButton radioButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,18 +21,15 @@ public class Settings extends AppCompatActivity {
 
 
         }
-        public void goBLUE(View view)
+        public void goBLUE(View v)
         {
             view.setBackgroundResource(R.color.blue);
         }
-        public void goGreen(View view)
+        public void goGreen(View v)
         {
             view.setBackgroundResource(R.color.green);
         }
-        public void goYellow(View v)
-        {
-            view.setBackgroundResource(R.color.yellow);
-        }
+        public void goYellow(View v) { view.setBackgroundResource(R.color.yellow); }
         public void goHotPink(View v)
     {
             view.setBackgroundResource(R.color.hot_pink);
@@ -41,7 +42,7 @@ public class Settings extends AppCompatActivity {
         {
             view.setBackgroundResource(R.color.cayan);
         }
-    public void goRed(View v)
+        public void goRed(View v)
     {
         view.setBackgroundResource(R.color.red);
     }
@@ -49,7 +50,7 @@ public class Settings extends AppCompatActivity {
         {
             view.setBackgroundResource(R.color.purple);
         }
-        public void goWhite(View view)
+        public void goWhite(View v)
         {
             view.setBackgroundResource(R.color.white);
         }
@@ -65,4 +66,5 @@ public class Settings extends AppCompatActivity {
         {
             view.setBackgroundResource(R.color.beige);
         }
+        public void goDarkMode(View v){view.setBackgroundResource(R.color.black);textView.getResources().getColor(R.color.white);}
     }

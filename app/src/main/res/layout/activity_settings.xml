@@ -83,7 +83,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="goBLUE" />
+                android:onClick="goBLUE"
+                android:buttonTint="@color/blue"/>
 
 
             <RadioButton
@@ -91,14 +92,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="goGreen" />
+                android:onClick="goGreen"
+                android:buttonTint="@color/green"/>
 
             <RadioButton
                 android:id="@+id/yellowButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="goYellow"/>
+                android:onClick="goYellow"
+                android:buttonTint="@color/yellow"/>
 
             <RadioButton
                 android:id="@+id/hotPinkButton"
@@ -106,7 +109,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text=""
-                android:onClick="goHotPink"/>
+                android:onClick="goHotPink"
+                android:buttonTint="@color/hot_pink"/>
 
             <RadioButton
                 android:id="@+id/orangeButton"
@@ -114,7 +118,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text=""
-                android:onClick="goOrange"/>
+                android:onClick="goOrange"
+                android:buttonTint="@color/orange"/>
 
             <RadioButton
                 android:id="@+id/cyanButton"
@@ -122,7 +127,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text=""
-                android:onClick="goCyan"/>
+                android:onClick="goCyan"
+                android:buttonTint="@color/cayan"/>
         </LinearLayout>
 
         <LinearLayout
@@ -136,7 +142,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text=""
-                android:onClick="goRed"/>
+                android:onClick="goRed"
+                android:buttonTint="@color/red"/>
 
             <RadioButton
                 android:id="@+id/purpleButton"
@@ -144,7 +151,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text=""
-                android:onClick="goPurple"/>
+                android:onClick="goPurple"
+                android:buttonTint="@color/purple"/>
 
             <RadioButton
                 android:id="@+id/whiteButton"
@@ -152,7 +160,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text=""
-                android:onClick="goWhite"/>
+                android:onClick="goWhite"
+                android:buttonTint="@color/white"/>
 
             <RadioButton
                 android:id="@+id/blackButton"
@@ -160,7 +169,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text=""
-                android:onClick="goBlack"/>
+                android:onClick="goBlack"
+                android:buttonTint="@color/black"/>
 
             <RadioButton
                 android:id="@+id/grayButton"
@@ -168,14 +178,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text=""
-                android:onClick="goGray"/>
+                android:onClick="goGray"
+                android:buttonTint="@color/gray"/>
 
             <RadioButton
                 android:id="@+id/beigeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="goBeige"/>
+                android:onClick="goBeige"
+                android:buttonTint="@color/beige"/>
 
         </LinearLayout>
     </RadioGroup>
@@ -261,7 +273,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text="Dark Mode"
+                android:onClick="goDarkMode"/>
         </LinearLayout>
     </RadioGroup>
 
