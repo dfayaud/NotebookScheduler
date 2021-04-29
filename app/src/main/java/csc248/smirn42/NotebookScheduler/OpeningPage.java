@@ -25,5 +25,4 @@ public class OpeningPage extends AppCompatActivity {
         startActivity(intent);
     }
 
-
 }
