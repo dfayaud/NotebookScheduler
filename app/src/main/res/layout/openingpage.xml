@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#00BCD4"
@@ -35,7 +34,7 @@
             android:id="@+id/button"
             android:layout_width="156dp"
             android:layout_height="64dp"
-            android:onClick="gotoMainActivity"
+            android:onClick="gotoCalendarActivity"
             android:text="Go to Calendar"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -104,4 +103,3 @@
             tools:layout_editor_absoluteY="345dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
