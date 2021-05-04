@@ -54,7 +54,9 @@ public class NotebookMenuRecyclerAdapter extends RecyclerView.Adapter<NotebookMe
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), notes_example.class);
+                intent.putExtra("notebookName", thumbnailList.get(position).getNotebookName());
                 view.getContext().startActivity(intent);
+                //pass information to notes_example here
             }
         });
         //set pic here maybe
@@ -116,17 +118,16 @@ public class NotebookMenuRecyclerAdapter extends RecyclerView.Adapter<NotebookMe
         }
     }
 
-    public void getDetails(String details) {
-        notebookDB = new DataBaseHelper(context);
-        sqLiteDatabase = notebookDB.getReadableDatabase();
-        Cursor cursor = notebookDB.getNotebookDetails(details);
-        if(cursor.moveToFirst()) {
-            thumbnailTitle = cursor.getString(0);
-            cursor.close();
-            notebookDB.close();
-        } else {
-            Log.d("error ", "something went wrong");
-        }
-
-    }
+//    public void getDetails(String details) {
+//        notebookDB = new DataBaseHelper(context);
+//        sqLiteDatabase = notebookDB.getReadableDatabase();
+//        Cursor cursor = notebookDB.getNotebookDetails(details);
+//        if(cursor.moveToFirst()) {
+//            thumbnailTitle = cursor.getString(0);
+//            cursor.close();
+//            notebookDB.close();
+//        } else {
+//            Log.d("error ", "something went wrong");
+//        }
+//    }
 }
