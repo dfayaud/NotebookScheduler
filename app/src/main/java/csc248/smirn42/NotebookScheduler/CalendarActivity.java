@@ -99,7 +99,7 @@ public class CalendarActivity extends AppCompatActivity {
     }
 
     public void goToNotebook() {
-        Intent intent = new Intent(this, Notebook.class);
+        Intent intent = new Intent(this, NotebookHome.class);
         startActivity(intent);
     }
 
