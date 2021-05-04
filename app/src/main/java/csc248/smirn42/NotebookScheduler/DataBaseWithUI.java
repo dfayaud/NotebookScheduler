@@ -8,12 +8,12 @@ import java.util.List;
 
 public class DataBaseWithUI {
 
-    private Context context;
+    private static Context context;
 
     public DataBaseWithUI(Context context){
         this.context = context;
     }
-    public  ArrayList<Event> ListOfEvents(String day , String month , String year){
+    public static ArrayList<Event> ListOfEvents(String day , String month , String year){
 
         DataBaseHelper helper = new DataBaseHelper(context);
         List<Note> notes = helper.getNotes(day+"-"+month+"-"+year);
