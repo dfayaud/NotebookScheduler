@@ -52,7 +52,7 @@ public class CalendarActivity extends AppCompatActivity {
                 SimpleDateFormat df = new SimpleDateFormat("dd-MMMM-yyyy");
                 String formattedDate = df.format(dateClicked);
                 intent.putExtra("date", formattedDate);
-                intent.putExtra("dateIndateFormate", dateClicked);
+                intent.putExtra("dateIndateFormat", dateClicked);
                 startActivity(intent);
             }
 
@@ -152,7 +152,7 @@ public class CalendarActivity extends AppCompatActivity {
         ArrayList<String> dates = dataBaseWithUI.ListOfDatesHasEvents();
         //   DummyData d = new DummyData();
         //    ArrayList<String> dates = d.arrayList;
-        if (dates != null) {
+        if (!dates.get(0).equals("")) {
             for (int i = 0; i < dates.size(); i++) {
                 String date = dates.get(i);
                 Calendar calendar = Calendar.getInstance();
