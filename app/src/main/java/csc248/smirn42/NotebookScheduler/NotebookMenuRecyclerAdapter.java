@@ -50,15 +50,27 @@ public class NotebookMenuRecyclerAdapter extends RecyclerView.Adapter<NotebookMe
     public void onBindViewHolder(@NonNull NotebookMenuRecyclerAdapter.CustomViewHolder holder, int position) {
         holder.notebookBtn.setText(thumbnailList.get(position).getNotebookName());
         holder.notebookBtn.setBackgroundResource(thumbnailList.get(position).getNotebookColor());
-        holder.notebookBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), notes_example.class);
-                intent.putExtra("notebookName", thumbnailList.get(position).getNotebookName());
-                view.getContext().startActivity(intent);
-                //pass information to notes_example here
-            }
-        });
+        if(thumbnailList.get(position).isList()) {
+            holder.notebookBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), NoteList.class);
+                    intent.putExtra("notebookName", thumbnailList.get(position).getNotebookName());
+                    view.getContext().startActivity(intent);
+                    System.out.println(thumbnailList.get(position).isList());
+                }
+            });
+        } else {
+            holder.notebookBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), notes_example.class);
+                    intent.putExtra("notebookName", thumbnailList.get(position).getNotebookName());
+                    view.getContext().startActivity(intent);
+                    System.out.println(thumbnailList.get(position).isList());
+                }
+            });
+        }
         //set pic here maybe
         //set description here maybe
         //set due date here maybe
