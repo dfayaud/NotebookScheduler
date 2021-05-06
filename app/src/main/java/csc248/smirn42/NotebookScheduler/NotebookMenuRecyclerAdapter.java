@@ -1,6 +1,8 @@
 package csc248.smirn42.NotebookScheduler;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -50,6 +52,32 @@ public class NotebookMenuRecyclerAdapter extends RecyclerView.Adapter<NotebookMe
     public void onBindViewHolder(@NonNull NotebookMenuRecyclerAdapter.CustomViewHolder holder, int position) {
         holder.notebookBtn.setText(thumbnailList.get(position).getNotebookName());
         holder.notebookBtn.setBackgroundResource(thumbnailList.get(position).getNotebookColor());
+
+        //Handler for notebook deletion
+        holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setCancelable(false);
+                builder.setTitle("Delete " + thumbnailList.get(position).getNotebookName() + "?");
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+
+                builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        notebookDB.deleteNotebook(thumbnailList.get(position).getNotebookName());
+                    }
+                });
+                builder.show();
+            }
+        });
+        //Decide what type of notebook
         if(thumbnailList.get(position).isList()) {
             holder.notebookBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -114,12 +142,12 @@ public class NotebookMenuRecyclerAdapter extends RecyclerView.Adapter<NotebookMe
 //    };
 
     public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        Button notebookBtn;
+        Button notebookBtn, deleteBtn;
 
         public CustomViewHolder(View view) {
             super(view);
             notebookBtn = view.findViewById(R.id.notebook_thumbnail_btn);
-
+            deleteBtn = view.findViewById(R.id.delte_btn);
         }
 
         @Override
