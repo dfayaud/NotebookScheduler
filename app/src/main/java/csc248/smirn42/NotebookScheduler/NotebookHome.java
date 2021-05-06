@@ -19,6 +19,7 @@ public class NotebookHome extends AppCompatActivity {
     private List<Notebook> notebookThumbnailList = new ArrayList<>();
     private DataBaseHelper notebookDB;
     NotebookClickListener listener;
+    private DataBaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,5 +61,7 @@ public class NotebookHome extends AppCompatActivity {
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
     }
+
+
 
 }
